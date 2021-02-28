@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Währungsrechner</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+</head>
+<style type="text/css" media="screen">
+
+	body{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height:  100vh;
+		background-color: #6C1A08;
+	}
+
+	#mainDiv{
+		display:  flex;
+		width: 70%;
+		height:  70vh;
+		background-color: #88311F;
+		flex-direction: column;
+		align-items:  center;
+		border-radius: 5px;
+	}
+
+	#input{
+		width: 50%;
+		height: 2em;		
+		margin-bottom: 2em;
+	}
+
+	#output{
+		width: 50%;
+		height: 2em;		
+		margin-bottom: 2em;
+	}
+
+	#button{
+		width: 20%;
+		height:  2em;
+		margin-top: 1em;
+		background-color: #B34B34;
+	}
+
+	.text{
+		color: white;
+	}
+	
+</style>
+<body>
+
+<div id="mainDiv">
+	<h1 class="text">Währungsrechner</h1>
+	<p class="text">Euro</p>
+	<input type="input" placeholder="0€" id="input">
+	<p class="text">Yen/Dollar</p>
+	<input type="input" placeholder="0$" id="output">
+	<select  id ="currency" name ="currency">
+		<option value="dollar">Dollar</option>
+		<option value="yen">Yen</option>		
+	</select>
+	<input class="text" type="button" value="Enter" id="button">
+</div>
+
+
+<script>
+	
+	$(document).ready(function(){
+		$("#button").click( function(){
+
+			var inputValue = $("#input").val();
+			var currency = $("#currency").val();
+
+			if($.isNumeric(inputValue)){
+
+				if(currency == "dollar"){
+					var endValue = inputValue * 1.22;
+				}else if(currency == "yen"){
+					var endValue = inputValue * 125.79;
+				}
+				
+				$("#output").val(endValue);
+
+			} else {
+
+				alert("put in a number");
+			}
+
+		})
+     		
+	})
+</script>				
+</body>
+				
+</html>
